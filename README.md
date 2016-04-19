@@ -1,2 +1,2 @@
 # bloomberg-to-mathematica
-minimal install set for the bloomberg-to-mathematica WSTP interface
+This directory contains a minimal install set for the bloomberg-to-mathematica WSTP interface -- just a Mathematica notebook with interface code and a directory of x86 executables. Together, these will let you move data (daily IBM returns between 1969 and 1988, large holders of Walmart, price-to-book ratio of every stock in the Nasdaq index, or whatever) from the Bloomberg servers into Mathematica. As of version 0.5, you can also submit "overrides" to reference data requests, which means you can have Bloomberg compute things like Beta between two instruments, or correlations for you.
