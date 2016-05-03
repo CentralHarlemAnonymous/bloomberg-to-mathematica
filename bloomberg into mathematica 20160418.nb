@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[    157029,       3448]
-NotebookOptionsPosition[    154664,       3366]
-NotebookOutlinePosition[    155096,       3384]
-CellTagsIndexPosition[    155053,       3381]
+NotebookDataLength[    161920,       3551]
+NotebookOptionsPosition[    159555,       3469]
+NotebookOutlinePosition[    159988,       3487]
+CellTagsIndexPosition[    159945,       3484]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -129,29 +129,30 @@ Cell["Code", "Section",
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"bbgifyDate", "[", "date_", "]"}], ":=", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", "dtO", "}"}], ",", 
+   RowBox[{
+    RowBox[{"bbgifyDate", "[", "date_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
      RowBox[{
-      RowBox[{"dtO", "=", 
-       RowBox[{"Which", "[", 
-        RowBox[{
+      RowBox[{"{", "dtO", "}"}], ",", 
+      RowBox[{
+       RowBox[{"dtO", "=", 
+        RowBox[{"Which", "[", 
          RowBox[{
-          RowBox[{"StringQ", "[", "date", "]"}], "&&", 
           RowBox[{
-           RowBox[{"StringLength", "[", "date", "]"}], "\[Equal]", "0"}]}], 
-         ",", 
-         RowBox[{"DateObject", "[", "]"}], ",", 
-         RowBox[{
-          RowBox[{"Head", "[", "date", "]"}], "===", "DateObject"}], ",", 
-         "date", ",", "True", ",", 
-         RowBox[{"DateObject", "[", "date", "]"}]}], "]"}]}], ";", 
-      RowBox[{"DateString", "[", 
-       RowBox[{"dtO", ",", 
-        RowBox[{"{", 
-         RowBox[{"\"\<Year\>\"", ",", "\"\<Month\>\"", ",", "\"\<Day\>\""}], 
-         "}"}]}], "]"}]}]}], "]"}]}], ";", 
+           RowBox[{"StringQ", "[", "date", "]"}], "&&", 
+           RowBox[{
+            RowBox[{"StringLength", "[", "date", "]"}], "\[Equal]", "0"}]}], 
+          ",", 
+          RowBox[{"DateObject", "[", "]"}], ",", 
+          RowBox[{
+           RowBox[{"Head", "[", "date", "]"}], "===", "DateObject"}], ",", 
+          "date", ",", "True", ",", 
+          RowBox[{"DateObject", "[", "date", "]"}]}], "]"}]}], ";", 
+       RowBox[{"DateString", "[", 
+        RowBox[{"dtO", ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Year\>\"", ",", "\"\<Month\>\"", ",", "\"\<Day\>\""}], 
+          "}"}]}], "]"}]}]}], "]"}]}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{
@@ -161,8 +162,9 @@ Cell[BoxData[{
      "string"}], ",", " ", 
     RowBox[{"returns", " ", 
      RowBox[{"today", "'"}], "s", " ", 
-     RowBox[{"date", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+     RowBox[{"date", "."}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"Options", "[", "msGetBBGMakeLinkObject", "]"}], "=", 
    RowBox[{"{", 
@@ -671,6 +673,41 @@ EventSeries[], while value-type data is stored as TimesSeries[].\>\""}], " ",
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
+   RowBox[{"Options", "[", "msBBGetIntradayMakeLinkObject", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<path to executable\>\"", "\[Rule]", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Drop", "[", 
+          RowBox[{
+           RowBox[{"FileNameSplit", "[", "$InstallationDirectory", "]"}], ",", 
+           RowBox[{"-", "2"}]}], "]"}], ",", "\"\<msFunctions\>\"", ",", 
+         "\"\<BBRetrieveIntraday.exe\>\""}], "}"}], "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"msBBGetIntradayMakeLinkObject", "[", 
+     RowBox[{"OptionsPattern", "[", "]"}], "]"}], ":=", 
+    RowBox[{"Install", "[", 
+     RowBox[{"OptionValue", "[", "\"\<path to executable\>\"", "]"}], "]"}]}],
+    ";", 
+   RowBox[{
+    RowBox[{"msBBGetIntradayMakeLinkObject", "::", "usage"}], " ", "=", " ", 
+    "\"\<msBBGetIntradayMakeLinkObject[]: When run, launches the WSTP \
+application that moves historical intraday data from Bloomberg to \
+Mathematica. msBBGetIntraday[] will launch and kill this automatically, but \
+you can do it manually with this function, assign the result to a variable, \
+and pass the link to msBBGetIntraday[] with the \\\"LinkObject]\\\"\[Rule] \
+option if you plan on calling it many times in succession.  This saves the \
+overhead of relaunching the link for every call. When finished, can call \
+Uninstall[(this link)] and the program will be quit. Can set \\\"path to \
+executable\\\" variable if the default is for some reason not what you \
+want.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
    RowBox[{
     RowBox[{"Options", "[", "msBBGetIntraday", "]"}], "=", 
     RowBox[{"{", 
@@ -681,7 +718,6 @@ EventSeries[], while value-type data is stored as TimesSeries[].\>\""}], " ",
       RowBox[{"\"\<daylightsaving end\>\"", "\[Rule]", 
        RowBox[{"{", 
         RowBox[{"2015", ",", "11", ",", "1"}], "}"}]}], ",", 
-      RowBox[{"name", "\[Rule]", "\"\<df\>\""}], ",", 
       RowBox[{"\"\<tick type\>\"", "\[Rule]", "\"\<TRADE\>\""}], ",", 
       RowBox[{"\"\<LinkObject\>\"", "\[Rule]", "Null"}], ",", 
       RowBox[{"\"\<path to executable\>\"", "\[Rule]", 
@@ -694,8 +730,10 @@ EventSeries[], while value-type data is stored as TimesSeries[].\>\""}], " ",
              RowBox[{"FileNameSplit", "[", "$InstallationDirectory", "]"}], 
              ",", 
              RowBox[{"-", "2"}]}], "]"}], ",", "\"\<msFunctions\>\"", ",", 
-           "\"\<BBRetrieveIntraday.exe\>\""}], "}"}], "]"}], "]"}]}]}], 
-     "}"}]}], ";", 
+           "\"\<BBRetrieveIntraday.exe\>\""}], "}"}], "]"}], "]"}]}], ",", 
+      RowBox[{"\"\<output\>\"", "\[Rule]", "Association"}]}], 
+     RowBox[{"(*", 
+      RowBox[{"or", " ", "List"}], "*)"}], "}"}]}], ";", 
    RowBox[{
     RowBox[{"msBBGetIntraday", "[", 
      RowBox[{
@@ -902,6 +940,27 @@ EventSeries[], while value-type data is stored as TimesSeries[].\>\""}], " ",
              RowBox[{"#", "[", 
               RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "&"}], ",", "output"}],
           "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"output", " ", "=", " ", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"OptionValue", "[", "\"\<output\>\"", "]"}], "===", 
+           "List"}], ",", "output", ",", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"<|", 
+              RowBox[{
+               RowBox[{"\"\<Time\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<Price\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<Size\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}]}]}], "|>"}], "&"}], ",", 
+            "output"}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"If", "[", 
         RowBox[{
          RowBox[{
@@ -922,10 +981,12 @@ EventSeries[], while value-type data is stored as TimesSeries[].\>\""}], " ",
 ticks from Bloomberg for a given ticker within the specified period. \n\
 PARAMETERS:\nticker: e.g., \\\"AAPL Equity\\\"\nstarttime: DateObject \
 indicating start date and time\nendtime: DateObject indicating end date and \
-time\n\nBy default returns trade data, but can set option \\\"tick type\\\" \
-to \\\"BID\\\" or \\\"ASK\\\" if you want something different.\n\nReturns a \
-three-member list for every datapoint available: {time, price, size}. \
-Optional parameters include \\\"\!\(\*
+time.\n\nBloomberg seems to save detailed intraday data back six months.\n\n\
+By default returns trade data, but can set option \\\"tick type\\\" to \
+\\\"BID\\\" or \\\"ASK\\\" if you want something different.\n\nReturns a \
+three-member list for every datapoint available: {time, price, size}. Pass \\\
+\"output\\\"\[Rule]Association if you prefer an Association to the list. \
+Oother optional parameters include \\\"\!\(\*
 StyleBox[\"daylightsaving\",
 FontVariations->{\"Underline\"->True}]\)\!\(\*
 StyleBox[\" \",
@@ -976,16 +1037,15 @@ the path here.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
    RowBox[{
     RowBox[{"msBBGetIntradayBarsMakeLinkObject", "::", "usage"}], " ", "=", 
     " ", "\"\<msBBGetIntradayBarsMakeLinkObject[]: When run, launches the \
-WSTP application that moves historical intraday data from Bloomberg to \
-Mathematica. msBBGetIntraday[] will launch and kill this automatically, but \
-you can do it manually with this function, assign the result to a variable, \
-and pass the link to msBBGetIntradayBars[] with the \
-\\\"LinkObject]\\\"\[Rule] option if you plan on calling it many times in \
-succession.  This saves the overhead of relaunching the link for every call. \
-When finished, can call Uninstall[(this link)] and the program will be quit. \
-Can set \\\"path to executable\\\" variable if the default is for some reason \
-not what you want.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+WSTP application that moves historical intraday bar data from Bloomberg to \
+Mathematica. msBBGetIntradayBars[] will launch and kill this automatically, \
+but you can do it manually with this function, assign the result to a \
+variable, and pass the link to msBBGetIntradayBars[] with the \\\"LinkObject]\
+\\\"\[Rule] option if you plan on calling it many times in succession.  This \
+saves the overhead of relaunching the link for every call. When finished, can \
+call Uninstall[(this link)] and the program will be quit. Can set \\\"path to \
+executable\\\" variable if the default is for some reason not what you \
+want.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -1011,7 +1071,10 @@ not what you want.\>\""}], ";"}],
              ",", 
              RowBox[{"-", "2"}]}], "]"}], ",", "\"\<msFunctions\>\"", ",", 
            "\"\<BBRetrieveIntradayBars.exe\>\""}], "}"}], "]"}], "]"}]}], ",", 
-      RowBox[{"\"\<LinkObject\>\"", "\[Rule]", "Null"}]}], "}"}]}], ";", 
+      RowBox[{"\"\<LinkObject\>\"", "\[Rule]", "Null"}], ",", 
+      RowBox[{"\"\<output\>\"", "\[Rule]", "Association"}]}], 
+     RowBox[{"(*", 
+      RowBox[{"or", " ", "List"}], "*)"}], "}"}]}], ";", 
    RowBox[{
     RowBox[{"msBBGetIntradayBars", "[", 
      RowBox[{
@@ -1226,6 +1289,39 @@ not what you want.\>\""}], ";"}],
              RowBox[{"#", "[", 
               RowBox[{"[", "7", "]"}], "]"}]}], "}"}], "&"}], ",", "output"}],
           "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"output", " ", "=", " ", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"OptionValue", "[", "\"\<output\>\"", "]"}], "===", 
+           "List"}], ",", "output", ",", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"<|", 
+              RowBox[{
+               RowBox[{"\"\<Time\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<Open\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<High\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<Low\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<Close\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "5", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<Tick Counts\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "6", "]"}], "]"}]}], ",", 
+               RowBox[{"\"\<Shares\>\"", "\[Rule]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "7", "]"}], "]"}]}]}], "|>"}], "&"}], ",", 
+            "output"}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"If", "[", 
         RowBox[{
          RowBox[{
@@ -1250,15 +1346,18 @@ pass\n\t\\\"tick type\\\" \[Rule]  \\\"TRADE\\\" or \\\"BID\\\" or \
 \\\"ASK\\\", and/or\n\t\\\"fill\\\"\[Rule] If this is set to 1, the API will \
 append previous day close information as first datapoint as the start of \
 trading for the specified period. Otherwise, the first data point will be the \
-actual first trading on that day.\n\n\nReturns a list of seven items for each \
-bar \[LongDash]\n1: Time\n2: Open\n3: High\n4: Low\n5: Close\n6: Tick Counts \
-per bar\n7: Shares per bar\n\n\\\"LinkObject\\\" can be passed a link object \
-created by msBBGetIntradayBarsMakeLinkObject[], saving the overhead of \
-re-launching the link. If you do this, later Uninstall[] the link.\n\\\"path \
-to executable\\\"\[Rule]should be set to the correct place by default but if \
-you have more than one version of the executable, for example, you can pick \
-one by setting the path here.\n\nIf you want every trade, rather than \
-periodic samples, use msBBGetIntraday[].\>\""}], ";"}]}], "Input",
+actual first trading on that day.\n\nBloomberg seems to save detailed \
+intraday data back six months.\n\nReturns seven items for each bar \
+\[LongDash]\n1: Time\n2: Open\n3: High\n4: Low\n5: Close\n6: Tick Counts per \
+bar\n7: Shares per bar\n\nBy default returns these in List format, but pass \
+\\\"output\\\"\[Rule]Association if you prefer it that way.\n\\\"LinkObject\\\
+\" can be passed a link object created by \
+msBBGetIntradayBarsMakeLinkObject[], saving the overhead of re-launching the \
+link. If you do this, later Uninstall[] the link.\n\\\"path to executable\\\"\
+\[Rule]should be set to the correct place by default but if you have more \
+than one version of the executable, for example, you can pick one by setting \
+the path here.\n\nIf you want every trade, rather than periodic samples, use \
+msBBGetIntraday[].\>\""}], ";"}]}], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.43377820609375*^9, 3.433778217125*^9}, {
    3.433778369359375*^9, 3.4337783988125*^9}, {3.433778468640625*^9, 
@@ -1439,7 +1538,11 @@ periodic samples, use msBBGetIntraday[].\>\""}], ";"}]}], "Input",
    3.669984562589572*^9}, {3.6699845935103397`*^9, 3.669984598351617*^9}, {
    3.669987029003642*^9, 3.669987059072362*^9}, {3.6699871042399454`*^9, 
    3.6699871166686563`*^9}, {3.669987329119808*^9, 3.669987329224814*^9}, {
-   3.669987550357462*^9, 3.669987550514471*^9}}]
+   3.669987550357462*^9, 3.669987550514471*^9}, {3.6712802969814854`*^9, 
+   3.6712804355944138`*^9}, {3.671280676873214*^9, 3.6712807055898566`*^9}, 
+   3.67128094167836*^9, {3.6712809791635036`*^9, 3.6712809976035585`*^9}, {
+   3.6712827321037664`*^9, 3.6712827330208187`*^9}, {3.6712828877126665`*^9, 
+   3.671282951841335*^9}, {3.671283082080784*^9, 3.671283090544268*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3365,11 +3468,11 @@ Cell[BoxData["1.206323`"], "Output",
 }, Open  ]]
 },
 AutoGeneratedPackage->Automatic,
-WindowSize->{1271, 760},
-WindowMargins->{{88, Automatic}, {Automatic, 92}},
+WindowSize->{1618, 1030},
+WindowMargins->{{Automatic, -1695}, {Automatic, 33}},
 ShowSelection->True,
 Magnification:>0.95 Inherited,
-FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (February 25, 2016)",
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -3386,67 +3489,67 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[567, 22, 300, 4, 98, "Title"],
 Cell[870, 28, 716, 10, 30, "Subsubtitle"],
-Cell[1589, 40, 4870, 81, 366, "Text"],
+Cell[1589, 40, 4870, 81, 309, "Text"],
 Cell[CellGroupData[{
 Cell[6484, 125, 91, 1, 67, "Section"],
-Cell[6578, 128, 63546, 1313, 4551, "Input",
+Cell[6578, 128, 68437, 1416, 4311, "Input",
  InitializationCell->True]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[70161, 1446, 125, 2, 67, "Section"],
-Cell[70289, 1450, 101, 1, 29, "Text"],
+Cell[75052, 1549, 125, 2, 67, "Section"],
+Cell[75180, 1553, 101, 1, 29, "Text"],
 Cell[CellGroupData[{
-Cell[70415, 1455, 186, 3, 30, "Input"],
-Cell[70604, 1460, 78, 1, 29, "Output"]
+Cell[75306, 1558, 186, 3, 30, "Input"],
+Cell[75495, 1563, 78, 1, 29, "Output"]
 }, Open  ]],
-Cell[70697, 1464, 327, 6, 29, "Text"],
+Cell[75588, 1567, 327, 6, 29, "Text"],
 Cell[CellGroupData[{
-Cell[71049, 1474, 668, 12, 30, "Input"],
-Cell[71720, 1488, 361, 9, 29, "Output"]
+Cell[75940, 1577, 668, 12, 30, "Input"],
+Cell[76611, 1591, 361, 9, 29, "Output"]
 }, Open  ]],
-Cell[72096, 1500, 121, 1, 29, "Text"],
+Cell[76987, 1603, 121, 1, 29, "Text"],
 Cell[CellGroupData[{
-Cell[72242, 1505, 377, 7, 30, "Input"],
-Cell[72622, 1514, 381, 5, 29, "Output"]
+Cell[77133, 1608, 377, 7, 30, "Input"],
+Cell[77513, 1617, 381, 5, 29, "Output"]
 }, Open  ]],
-Cell[73018, 1522, 262, 5, 29, "Text"],
+Cell[77909, 1625, 262, 5, 29, "Text"],
 Cell[CellGroupData[{
-Cell[73305, 1531, 274, 6, 30, "Input"],
-Cell[73582, 1539, 30077, 620, 444, "Output"]
+Cell[78196, 1634, 274, 6, 30, "Input"],
+Cell[78473, 1642, 30077, 620, 444, "Output"]
 }, Open  ]],
-Cell[103674, 2162, 142, 1, 29, "Text"],
+Cell[108565, 2265, 142, 1, 29, "Text"],
 Cell[CellGroupData[{
-Cell[103841, 2167, 685, 11, 30, "Input"],
-Cell[104529, 2180, 12183, 293, 67, "Output"]
+Cell[108732, 2270, 685, 11, 30, "Input"],
+Cell[109420, 2283, 12183, 293, 67, "Output"]
 }, Open  ]],
-Cell[116727, 2476, 252, 5, 29, "Text"],
+Cell[121618, 2579, 252, 5, 29, "Text"],
 Cell[CellGroupData[{
-Cell[117004, 2485, 143, 2, 30, "Input"],
-Cell[117150, 2489, 121, 1, 29, "Output"]
+Cell[121895, 2588, 143, 2, 30, "Input"],
+Cell[122041, 2592, 121, 1, 29, "Output"]
 }, Open  ]],
-Cell[117286, 2493, 121, 1, 29, "Text"],
-Cell[117410, 2496, 141, 1, 29, "Text"],
+Cell[122177, 2596, 121, 1, 29, "Text"],
+Cell[122301, 2599, 141, 1, 29, "Text"],
 Cell[CellGroupData[{
-Cell[117576, 2501, 1837, 28, 30, "Input"],
-Cell[119416, 2531, 5773, 150, 100, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[125226, 2686, 1347, 21, 30, "Input"],
-Cell[126576, 2709, 4537, 99, 100, "Output"]
-}, Open  ]],
-Cell[131128, 2811, 219, 4, 29, "Text"],
-Cell[CellGroupData[{
-Cell[131372, 2819, 1467, 35, 91, "Input"],
-Cell[132842, 2856, 20449, 465, 232, "Output"]
+Cell[122467, 2604, 1837, 28, 30, "Input"],
+Cell[124307, 2634, 5773, 150, 100, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[153328, 3326, 137, 2, 30, "Input"],
-Cell[153468, 3330, 170, 2, 29, "Output"]
+Cell[130117, 2789, 1347, 21, 30, "Input"],
+Cell[131467, 2812, 4537, 99, 70, "Output"]
 }, Open  ]],
-Cell[153653, 3335, 99, 1, 29, "Text"],
+Cell[136019, 2914, 219, 4, 29, "Text"],
 Cell[CellGroupData[{
-Cell[153777, 3340, 764, 18, 51, "Input"],
-Cell[154544, 3360, 80, 1, 29, "Output"]
+Cell[136263, 2922, 1467, 35, 91, "Input"],
+Cell[137733, 2959, 20449, 465, 232, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[158219, 3429, 137, 2, 30, "Input"],
+Cell[158359, 3433, 170, 2, 29, "Output"]
+}, Open  ]],
+Cell[158544, 3438, 99, 1, 29, "Text"],
+Cell[CellGroupData[{
+Cell[158668, 3443, 764, 18, 51, "Input"],
+Cell[159435, 3463, 80, 1, 29, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
